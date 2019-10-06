@@ -66,7 +66,7 @@ const App = () => (
           <Filters />
         </Col>
         <Col mdOffset={1} md={9}>
-          <Products mode="grid" />
+          <Products mode="list" />
         </Col>
       </Row>
     </Container>

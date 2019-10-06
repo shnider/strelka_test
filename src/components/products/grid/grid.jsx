@@ -4,8 +4,6 @@ import { Row, Col } from 'react-flexbox-grid';
 import Card from './card';
 
 const Grid = ({ data = [] }) => {
-  console.log(data);
-
   return (
     <Row between="xs">
       {data.map(product => (

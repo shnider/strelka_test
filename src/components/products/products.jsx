@@ -44,10 +44,11 @@ const mockData = [
   },
 ];
 
-const Products = ({ type }) => {
+const Products = ({ mode }) => {
   return (
     <Wrapper>
-      <Grid data={mockData} />
+      {mode === 'grid' && <Grid data={mockData} />}
+      {mode === 'list' && <List data={mockData} />}
     </Wrapper>
   );
 };

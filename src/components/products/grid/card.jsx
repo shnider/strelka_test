@@ -12,7 +12,7 @@ const Image = styled.img`
 const Title = styled.h4`
   margin-top: 3.7rem;
   font-family: 'Roboro Mono';
-  font-style: normal;
+  font-weight: 400;
   font-weight: normal;
   font-size: 1.5rem;
   line-height: 1.8rem;
@@ -44,9 +44,7 @@ const Price = styled.p`
   }
 `;
 
-const Card = ({
-  data: { title, author, description, price, topic, img: imgURL },
-}) => (
+const Card = ({ data: { title, author, price, img: imgURL } }) => (
   <section>
     <Image src={imgURL} alt={title} />
     <Title>{title}</Title>
