@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Row, Col } from 'react-flexbox-grid';
 
@@ -57,7 +58,7 @@ const Container = styled.main`
 `;
 
 const App = () => (
-  <>
+  <Router>
     <GlobalStyle />
     <Container>
       <Header />
@@ -70,7 +71,7 @@ const App = () => (
         </Col>
       </Row>
     </Container>
-  </>
+  </Router>
 );
 
 export default App;

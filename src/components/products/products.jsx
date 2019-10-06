@@ -1,8 +1,9 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 
-import List from './list/list';
 import Grid from './grid/grid';
+import List from './list/list';
 
 const Wrapper = styled.div`
   margin-top: 6rem;
@@ -44,11 +45,20 @@ const mockData = [
   },
 ];
 
-const Products = ({ mode }) => {
+const Products = () => {
   return (
     <Wrapper>
-      {mode === 'grid' && <Grid data={mockData} />}
-      {mode === 'list' && <List data={mockData} />}
+      <Switch>
+        <Route exact path="/">
+          <Grid data={mockData} />
+        </Route>
+        <Route path="/grid">
+          <Grid data={mockData} />
+        </Route>
+        <Route path="/list">
+          <List data={mockData} />
+        </Route>
+      </Switch>
     </Wrapper>
   );
 };
