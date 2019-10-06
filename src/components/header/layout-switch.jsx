@@ -11,6 +11,7 @@ const IconButton = styled.svg`
 const LayoutSwitch = () => (
   <Wrapper>
     <IconButton
+      isActive
       width="31"
       height="31"
       viewBox="0 0 31 31"
@@ -22,7 +23,7 @@ const LayoutSwitch = () => (
       <rect x="16.5332" y="16.5332" width="14.4667" height="14.4667" />
     </IconButton>
     <IconButton
-      isActive
+      isActive={false}
       width="40"
       height="31"
       fill="#979797"

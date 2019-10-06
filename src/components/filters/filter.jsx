@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import plus from '../../assets/plus.svg';
 import minus from '../../assets/minus.svg';
@@ -7,10 +7,10 @@ import minus from '../../assets/minus.svg';
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 0 0 3.5rem 0;
+  margin-top: 3.5rem;
 
   &:first-child {
-    margin: 6rem 0 3.5rem 0;
+    margin-top: 6rem;
   }
 `;
 
@@ -23,13 +23,13 @@ const ToggleButton = styled.span`
   cursor: pointer;
 
   ::after {
+    content: ' ';
     display: inline-block;
-    width: 19px;
-    height: 19px;
+    width: 1.9rem;
+    height: 1.9rem;
     margin: 0.5rem 0 0 0;
     background: url(${props => (props.isOpen ? minus : plus)});
     background-size: cover;
-    content: ' ';
   }
 `;
 
