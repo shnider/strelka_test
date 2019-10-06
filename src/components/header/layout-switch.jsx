@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div``;
 
 const IconButton = styled.svg`
-  fill: #000;
+  fill: ${props => (props.isActive ? '#000' : '#979797')};
   margin-left: 4.2rem;
 `;
 
@@ -16,26 +16,22 @@ const LayoutSwitch = () => (
       viewBox="0 0 31 31"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect width="14.4667" height="14.4667" fill="black" />
-      <rect y="16.5332" width="14.4667" height="14.4667" fill="black" />
-      <rect x="16.5332" width="14.4667" height="14.4667" fill="black" />
-      <rect
-        x="16.5332"
-        y="16.5332"
-        width="14.4667"
-        height="14.4667"
-        fill="black"
-      />
+      <rect width="14.4667" height="14.4667" />
+      <rect y="16.5332" width="14.4667" height="14.4667" />
+      <rect x="16.5332" width="14.4667" height="14.4667" />
+      <rect x="16.5332" y="16.5332" width="14.4667" height="14.4667" />
     </IconButton>
     <IconButton
+      isActive
       width="40"
       height="31"
+      fill="#979797"
       viewBox="0 0 40 31"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect y="13.4331" width="4.10526" height="4.13333" fill="black" />
-      <rect width="4.10526" height="4.13333" fill="black" />
-      <rect y="26.8667" width="4.10526" height="4.13333" fill="black" />
+      <rect y="13.4331" width="4.10526" height="4.13333" />
+      <rect width="4.10526" height="4.13333" />
+      <rect y="26.8667" width="4.10526" height="4.13333" />
       <path
         d="M8.21094 15.5518L39.0004 15.4485"
         stroke="black"

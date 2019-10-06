@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Title = styled.span`
   margin-right: 3rem;
   font-size: 2.2rem;
-  vertical-align: sub;
+  vertical-align: bottom;
 `;
 
 const StyledInput = styled.input`
