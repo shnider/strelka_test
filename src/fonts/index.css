@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Helvetica Regular';
+  font-weight: regular;
+  src: local('Helvetica Regular'), local('HelveticaRegular'),
+    url('helvetica-regular.woff') format('woff')),
+    url('helvetica-regular.otf') format('otf'));
+}
+
+@font-face {
+  font-family: 'Helvetica Light';
+  font-weight: regular;
+  src: local('Helvetica Light'), local('HelveticaLight'),
+    url('helvetica-light.woff') format('woff'));
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Mono'), local('RobotoMono-Regular'),
+    url('roboto-mono-regular.woff2') format('woff2'),
+    url('roboto-mono-regular.woff') format('woff')
+}
