@@ -14,7 +14,7 @@ const LayoutSwitch = () => {
     <div>
       <Link to="/grid">
         <IconButton
-          isActive={pathname === '/grid' && pathname === '/'}
+          isActive={pathname === '/grid' || pathname === '/'}
           width="31"
           height="31"
           viewBox="0 0 31 31"
