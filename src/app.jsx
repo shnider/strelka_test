@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Row, Col } from 'react-flexbox-grid';
 
@@ -8,6 +8,8 @@ import './fonts/index.css';
 import Header from './components/header/header';
 import Filters from './components/filters/filters';
 import Products from './components/products/products';
+
+import getProducts from './api/get-products';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -35,21 +37,23 @@ const Container = styled.main`
   }
 `;
 
-const App = () => (
-  <Router>
-    <GlobalStyle />
-    <Container>
-      <Header />
-      <Row>
-        <Col md={2}>
-          <Filters />
-        </Col>
-        <Col mdOffset={1} md={9}>
-          <Products mode="list" />
-        </Col>
-      </Row>
-    </Container>
-  </Router>
-);
+const App = () => {
+  return (
+    <Router>
+      <GlobalStyle />
+      <Container>
+        <Header />
+        <Row>
+          <Col md={2}>
+            <Filters />
+          </Col>
+          <Col mdOffset={1} md={9}>
+            <Products mode="list" />
+          </Col>
+        </Row>
+      </Container>
+    </Router>
+  );
+};
 
 export default App;
