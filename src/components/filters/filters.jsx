@@ -1,11 +1,18 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import Filter from './filter';
+import { getFilterOptions } from '../products/selectors';
 
 const Filters = () => {
-  return ['Тема', 'Автор'].map(category => (
-    <Filter key={category} category={category} />
-  ));
+  const { topics, authors } = useSelector(getFilterOptions);
+
+  return (
+    <>
+      <Filter category="ТЕМА" id="topic" options={topics} />
+      <Filter category="АВТОР" id="author" options={authors} />
+    </>
+  );
 };
 
 export default Filters;

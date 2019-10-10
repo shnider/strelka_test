@@ -6,8 +6,8 @@ import Card from './card';
 const Grid = ({ data = [] }) => {
   return (
     <Row between="xs">
-      {data.map(product => (
-        <Col key={product.id} md={3}>
+      {data.map((product, index) => (
+        <Col key={product.id} md={3} mdOffset={index % 4 === 0 ? 0 : 1}>
           <Card data={product} />
         </Col>
       ))}

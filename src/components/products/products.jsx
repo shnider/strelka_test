@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import styled from 'styled-components';
 
 import { fetchProductsRequest } from './actions';
@@ -21,16 +21,22 @@ const Products = () => {
     return () => {};
   }, [dispatch]);
 
+  const { getState } = useStore();
+
+  const { filters } = getState();
+
+  console.log(filters);
+
   const data = useSelector(getSliceOfProducts);
 
   return (
     <Wrapper>
       <Switch>
         <Route exact path="/">
-          <Grid data={[]} />
+          <Grid data={data} />
         </Route>
         <Route path="/grid">
-          <Grid data={[]} />
+          <Grid data={data} />
         </Route>
         <Route path="/list">
           <List data={data} />
