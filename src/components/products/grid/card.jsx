@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import plus from '../../../assets/plus.svg';
@@ -56,5 +57,15 @@ const Card = ({ data: { title, author, price, img: imgURL } }) => (
     <Price>{price}</Price>
   </Wrapper>
 );
+
+Card.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    author: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.string,
+    img: PropTypes.string,
+  }).isRequired,
+};
 
 export default Card;

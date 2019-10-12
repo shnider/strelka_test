@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col } from 'react-flexbox-grid';
 
 import Card from './card';
 
-const Grid = ({ data = [] }) => {
+const Grid = ({ data }) => {
   const converterData = useMemo(
     () =>
       data.reduce((acc, _, ind) => {
@@ -27,6 +28,18 @@ const Grid = ({ data = [] }) => {
       ))}
     </Row>
   ));
+};
+
+Grid.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      author: PropTypes.string,
+      description: PropTypes.string,
+      price: PropTypes.string,
+      img: PropTypes.string,
+    }).isRequired,
+  ),
 };
 
 export default Grid;
