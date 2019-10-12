@@ -1,5 +1,8 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+
+import { changeInputValue } from './actions';
 
 const Title = styled.span`
   margin-right: 3rem;
@@ -18,11 +21,17 @@ const StyledInput = styled.input`
   margin-bottom: 0.4rem;
 `;
 
-const Search = () => (
-  <div>
-    <Title>ПОИСК</Title>
-    <StyledInput />
-  </div>
-);
+const Search = () => {
+  const dispatch = useDispatch();
+
+  return (
+    <div>
+      <Title>ПОИСК</Title>
+      <StyledInput
+        onChange={({ target: { value } }) => dispatch(changeInputValue(value))}
+      />
+    </div>
+  );
+};
 
 export default Search;

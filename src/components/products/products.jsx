@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { fetchProductsRequest } from './actions';
-import { getSliceOfProducts } from './selectors';
+import { getProducts } from './selectors';
 
 import Grid from './grid/grid';
 import List from './list/list';
@@ -21,13 +21,7 @@ const Products = () => {
     return () => {};
   }, [dispatch]);
 
-  const { getState } = useStore();
-
-  const { filters } = getState();
-
-  console.log(filters);
-
-  const data = useSelector(getSliceOfProducts);
+  const data = useSelector(getProducts);
 
   return (
     <Wrapper>
