@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Search from './search';
+import Search from './search/search';
 import LayoutSwitch from './layout-switch';
 
 const Wrapper = styled.section`

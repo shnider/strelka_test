@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+
+import { setFilter, clearFilter } from './actions';
+import { getFilters } from './selectors';
 
 import plus from '../../assets/plus.svg';
 import minus from '../../assets/minus.svg';
@@ -37,8 +42,16 @@ const Option = styled.p`
   font-size: 1.8rem;
 `;
 
-const Filter = ({ category }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Filter = ({ category, id, options = [] }) => {
+  const dispatch = useDispatch();
+
+  const filters = useSelector(getFilters)[id] || [];
+
+  const [isOpen, setIsOpen] = useState(filters.length !== 0);
+
+  useEffect(() => {
+    if (filters.length > 0) setIsOpen(true);
+  }, [filters]);
 
   return (
     <>
@@ -50,14 +63,32 @@ const Filter = ({ category }) => {
         />
       </Wrapper>
       {isOpen &&
-        ['filter1', 'filter2', 'filter3'].map(filter => (
+        options.map(filter => (
           <Option key={filter}>
-            <input name={filter} type="checkbox" />
+            <input
+              checked={filters.includes(filter)}
+              type="checkbox"
+              onChange={({ target: { checked } }) => {
+                dispatch(
+                  checked ? setFilter(id, filter) : clearFilter(id, filter),
+                );
+              }}
+            />
             {filter}
           </Option>
         ))}
     </>
   );
+};
+
+Filter.propTypes = {
+  category: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string),
+};
+
+Filter.defaultProps = {
+  options: [],
 };
 
 export default Filter;

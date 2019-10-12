@@ -1,7 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import plus from '../../../assets/plus.svg';
+
+const Wrapper = styled.section`
+  margin-bottom: 6rem;
+`;
 
 const Image = styled.img`
   width: 100%;
@@ -45,12 +50,22 @@ const Price = styled.p`
 `;
 
 const Card = ({ data: { title, author, price, img: imgURL } }) => (
-  <section>
+  <Wrapper>
     <Image src={imgURL} alt={title} />
     <Title>{title}</Title>
     <Author>{author}</Author>
     <Price>{price}</Price>
-  </section>
+  </Wrapper>
 );
+
+Card.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    author: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.string,
+    img: PropTypes.string,
+  }).isRequired,
+};
 
 export default Card;

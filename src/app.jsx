@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { HashRouter as Router } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Row, Col } from 'react-flexbox-grid';
 
@@ -8,6 +9,9 @@ import './fonts/index.css';
 import Header from './components/header/header';
 import Filters from './components/filters/filters';
 import Products from './components/products/products';
+import configureStore from './redux/store';
+
+const store = configureStore();
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -31,25 +35,30 @@ const Container = styled.main`
   }
 
   @media screen and (min-width=1600) {
+    margin: 0 auto;
     width: 16rem;
   }
 `;
 
-const App = () => (
-  <Router>
-    <GlobalStyle />
-    <Container>
-      <Header />
-      <Row>
-        <Col md={2}>
-          <Filters />
-        </Col>
-        <Col mdOffset={1} md={9}>
-          <Products mode="list" />
-        </Col>
-      </Row>
-    </Container>
-  </Router>
-);
+const App = () => {
+  return (
+    <Router>
+      <Provider store={store}>
+        <GlobalStyle />
+        <Container>
+          <Header />
+          <Row between="md">
+            <Col md={2}>
+              <Filters />
+            </Col>
+            <Col md={9}>
+              <Products />
+            </Col>
+          </Row>
+        </Container>
+      </Provider>
+    </Router>
+  );
+};
 
 export default App;
