@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   output: {
@@ -31,7 +32,13 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   optimization: {
-    minimizer: [new OptimizeCSSAssetsPlugin({})],
+    minimize: true,
+    minimizer: [
+      new OptimizeCSSAssetsPlugin({}),
+      new TerserPlugin({
+        cache: true,
+      }),
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
