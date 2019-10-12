@@ -4,7 +4,6 @@ import { getFilters } from '../filters/selectors';
 import { getSeacrhInput } from '../header/search/selectors';
 
 export const getAllPoducts = state => state.products.data;
-export const getOffset = state => state.products.offset;
 export const getProducts = createSelector(
   getAllPoducts,
   getFilters,
