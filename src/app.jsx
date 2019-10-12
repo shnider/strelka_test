@@ -35,6 +35,7 @@ const Container = styled.main`
   }
 
   @media screen and (min-width=1600) {
+    margin: 0 auto;
     width: 16rem;
   }
 `;
@@ -46,11 +47,11 @@ const App = () => {
         <GlobalStyle />
         <Container>
           <Header />
-          <Row>
+          <Row between="md">
             <Col md={2}>
               <Filters />
             </Col>
-            <Col mdOffset={1} md={9}>
+            <Col md={9}>
               <Products />
             </Col>
           </Row>

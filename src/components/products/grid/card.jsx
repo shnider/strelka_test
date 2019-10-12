@@ -3,6 +3,10 @@ import styled from 'styled-components';
 
 import plus from '../../../assets/plus.svg';
 
+const Wrapper = styled.section`
+  margin-bottom: 6rem;
+`;
+
 const Image = styled.img`
   width: 100%;
   height: 33.5rem;
@@ -45,12 +49,12 @@ const Price = styled.p`
 `;
 
 const Card = ({ data: { title, author, price, img: imgURL } }) => (
-  <section>
+  <Wrapper>
     <Image src={imgURL} alt={title} />
     <Title>{title}</Title>
     <Author>{author}</Author>
     <Price>{price}</Price>
-  </section>
+  </Wrapper>
 );
 
 export default Card;

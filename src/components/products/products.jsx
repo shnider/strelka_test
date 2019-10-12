@@ -9,7 +9,7 @@ import { getProducts } from './selectors';
 import Grid from './grid/grid';
 import List from './list/list';
 
-const Wrapper = styled.span`
+const Wrapper = styled.div`
   margin-top: 6rem;
 `;
 
@@ -48,11 +48,10 @@ const Products = () => {
 
   const data = useSelector(getProducts);
 
-  const [isMoreAvailable, sliceOfData, setStep] = useDataSlice(data, 5);
+  const [isMoreAvailable, sliceOfData, setStep] = useDataSlice(data, 30);
 
   return (
     <Wrapper>
-      {!sliceOfData.length && <Placeholer>Ничего не найдено.</Placeholer>}
       <Switch>
         <Route exact path="/">
           <Grid data={sliceOfData} />
@@ -64,6 +63,7 @@ const Products = () => {
           <List data={sliceOfData} />
         </Route>
       </Switch>
+      {!sliceOfData.length && <Placeholer>Ничего не найдено.</Placeholer>}
       {isMoreAvailable && (
         <ShowMore onClick={() => setStep(prevStep => prevStep + 1)}>
           Показать еще
