@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import propTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -48,6 +49,10 @@ const Filter = ({ category, id, options = [] }) => {
 
   const [isOpen, setIsOpen] = useState(filters.length !== 0);
 
+  useEffect(() => {
+    if (filters.length > 0) setIsOpen(true);
+  }, [filters]);
+
   return (
     <>
       <Wrapper>
@@ -74,6 +79,16 @@ const Filter = ({ category, id, options = [] }) => {
         ))}
     </>
   );
+};
+
+Filter.propTypes = {
+  category: propTypes.string.isRequired,
+  id: propTypes.string.isRequired,
+  options: propTypes.arrayOf(propTypes.string),
+};
+
+Filter.defaultProps = {
+  options: [],
 };
 
 export default Filter;

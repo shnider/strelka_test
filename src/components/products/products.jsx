@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -8,6 +8,7 @@ import { getProducts } from './selectors';
 
 import Grid from './grid/grid';
 import List from './list/list';
+import { setIntialFilters } from '../filters/actions';
 
 const Wrapper = styled.div`
   margin-top: 6rem;
@@ -38,8 +39,34 @@ function useDataSlice(data, limit) {
   return [isMoreAvailable, sliceOfData, setStep];
 }
 
+function useInititalFilters(dispatch) {
+  const { search } = useLocation();
+
+  useEffect(() => {
+    if (search) {
+      const query = new URLSearchParams(search);
+
+      const intialFilters = {
+        topic: query
+          .get('topic')
+          .split(',')
+          .filter(Boolean),
+        author: query
+          .get('author')
+          .split(',')
+          .filter(Boolean),
+      };
+
+      dispatch(setIntialFilters(intialFilters));
+    }
+    // eslint-disable-next-line
+  }, []);
+}
+
 const Products = () => {
   const dispatch = useDispatch();
+
+  useInititalFilters(dispatch);
 
   useEffect(() => {
     dispatch(fetchProductsRequest());

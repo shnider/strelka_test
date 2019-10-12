@@ -9,16 +9,19 @@ export const getProducts = createSelector(
   getFilters,
   getSeacrhInput,
   (allProducts, filters, searchInput) => {
+    const filterList = Object.keys(filters);
+
     const { topic, author } = filters;
 
-    const isFiltred = topic.length || author.length;
+    const isFiltred = filterList.some(filter => filters[filter].length);
 
     const isSearch = searchInput !== '';
 
     const filtredProducts = isFiltred
       ? allProducts.filter(
           product =>
-            topic.includes(product.topic) || author.includes(product.author),
+            (topic.includes(product.topic) || !topic.length) &&
+            (author.includes(product.author) || !author.length),
         )
       : allProducts;
 
